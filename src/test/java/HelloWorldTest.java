@@ -5,8 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HelloWorldTest {
     @Test
-    public void testHelloWorld() {
-        String message = HelloWorld.getMessage();
+    public void testGetMessage() {
+        HelloWorld helloWorld = new HelloWorld();
+        String message = helloWorld.getMessage();
         assertEquals("Hello, World!", message);
     }
 }
