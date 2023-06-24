@@ -31,3 +31,11 @@ jobs:
       
     - name: Execute JAR
       run: java -jar target/*.jar
+      
+    - name: Deploy to EC2
+      run: |
+        scp -i path/to/key.pem target/*.jar ec2-user@<EC2_INSTANCE_IP>:/app/deployed.jar
+        ssh -i path/to/key.pem ec2-user@<EC2_INSTANCE_IP> "java -jar /app/deployed.jar"
+
+      
+ 
