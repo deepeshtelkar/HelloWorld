@@ -31,3 +31,8 @@ jobs:
       
     - name: Execute JAR
       run: java -jar target/*.jar
+      
+    - name: Deploy to EC2
+      run: |
+        scp -i path/to/key.pem target/*.jar ec2-user@<18.204.10.115>:/app/deployed.jar
+        ssh -i path/to/key.pem ec2-user@<18.204.10.115> "java -jar /app/deployed.jar"
