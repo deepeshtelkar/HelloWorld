@@ -33,6 +33,10 @@ jobs:
       run: java -jar target/*.jar
       
     - name: Deploy to EC2
+      env:
+        AWS_IP_ADDRESS: ${{ secrets.52.91.135.145 }}
+        AWS_PEM_FILE: ${{ secrets.AWSKEY}}
       run: |
-        scp -i path/to/key.pem target/*.jar ec2-user@<18.204.10.115>:/app/deployed.jar
-        ssh -i path/to/key.pem ec2-user@<18.204.10.115> "java -jar /app/deployed.jar"
+        scp -i ${{ secrets.AWSKEY }} target/*.jar ec2-user@${{ secrets.52.91.135.145}}:/app/deployed.jar
+        ssh -i ${{ secrets.AWSKEY }} ec2-user@${{ secrets.52.91.135.145}} "java -jar /app/deployed.jar"
+
